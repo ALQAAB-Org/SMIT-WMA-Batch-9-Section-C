@@ -10,7 +10,7 @@ Projects ke liye zaroori assets
 
 Kaise Istemal Karen
 Repository ko clone karen:
-git clone https://github.com/your-username/SMIT-WMA-Batch-9-Section-C.git
+git clone https://github.com/ALQAAB-Org/SMIT-WMA-Batch-9-Section-C
 
 Assignment dekhne ke liye uske folder mein jayein.
 
