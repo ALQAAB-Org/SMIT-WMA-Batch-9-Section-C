@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comprehensive Survey Form</title>
+  <style>
+    /* General look - similar to the screenshot (serif, compact) */
+    :root{
+      --max-width:1200px;
+      --gap:14px;
+      --label-w:160px;
+    }
+    body{
+      font-family: Georgia, "Times New Roman", serif;
+      margin:20px;
+      color:#111;
+      background:#fff;
+    }
+    .container{
+      max-width: var(--max-width);
+      margin:0 auto;
+      font-size:14px;
+    }
+    h1{
+      font-size:22px;
+      margin:0 0 8px 0;
+    }
+    p.lead{
+      margin:0 0 12px 0;
+      font-size:13px;
+    }
+
+    form{
+      border-top:1px solid #999;
+    }
+
+    fieldset{
+      margin:18px 0;
+      padding:12px;
+      border:1px solid #999;
+    }
+    legend{
+      padding:0 6px;
+      font-weight:bold;
+    }
+
+    /* Layout rows */
+    .row{
+      display:flex;
+      gap:var(--gap);
+      align-items:flex-start;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .col-label{
+      width:var(--label-w);
+      min-width:120px;
+    }
+    .col-input{
+      flex:1;
+      min-width:220px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:4px;
+      font-size:13px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    input[type="password"],
+    select,
+    textarea {
+      width:100%;
+      box-sizing:border-box;
+      padding:6px;
+      border:1px solid #ccc;
+      font-size:13px;
+      background:#fff;
+    }
+
+    textarea{
+      min-height:80px;
+      resize:vertical;
+    }
+
+    .small{
+      width:120px;
+    }
+
+    /* Two-column grid for checkboxes/radio groups */
+    .options-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:6px 20px;
+    }
+
+    .inline{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:13px;
+    }
+
+    .section-title{
+      font-weight:600;
+      margin:6px 0 10px 0;
+      font-size:14px;
+    }
+
+    .actions{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    button{
+      padding:8px 12px;
+      border:1px solid #777;
+      background:#f3f3f3;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    /* Make it look compact like the screenshot */
+    .compact label, .compact .inline { font-size:13px; }
+    .compact input, .compact textarea, .compact select { font-size:13px; padding:5px; }
+
+    /* Responsive adjustments */
+    @media (max-width:700px){
+      .col-label{ width:140px; }
+      .options-grid{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Comprehensive Survey Form</h1>
+    <p class="lead">Please fill out all the required information below</p>
+
+    <form class="compact" action="#" method="post">
+      <!-- Personal Information -->
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <div class="row">
+          <div class="col-label"><label for="firstName">First Name:</label></div>
+          <div class="col-input"><input id="firstName" name="firstName" type="text" placeholder="First name" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="lastName">Last Name:</label></div>
+          <div class="col-input"><input id="lastName" name="lastName" type="text" placeholder="Last name" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="middleName">Middle Name:</label></div>
+          <div class="col-input"><input id="middleName" name="middleName" type="text" placeholder="Middle name" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="dob">Date of Birth:</label></div>
+          <div class="col-input"><input id="dob" name="dob" type="date" class="small" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>Gender:</label></div>
+          <div class="col-input">
+            <div class="inline"><input type="radio" id="gMale" name="gender" value="male"/><label for="gMale">Male</label></div>
+            <div class="inline"><input type="radio" id="gFemale" name="gender" value="female"/><label for="gFemale">Female</label></div>
+            <div class="inline"><input type="radio" id="gOther" name="gender" value="other"/><label for="gOther">Other</label></div>
+            <div class="inline"><input type="radio" id="gNA" name="gender" value="na"/><label for="gNA">Prefer not to say</label></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="nationality">Nationality:</label></div>
+          <div class="col-input"><input id="nationality" name="nationality" type="text" placeholder="Enter your nationality" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="nid">National ID Number:</label></div>
+          <div class="col-input"><input id="nid" name="nid" type="text" placeholder="ID number" /></div>
+        </div>
+      </fieldset>
+
+      <!-- Contact Information -->
+      <fieldset>
+        <legend>Contact Information</legend>
+
+        <div class="row">
+          <div class="col-label"><label for="email">Email Address:</label></div>
+          <div class="col-input"><input id="email" name="email" type="email" placeholder="example@email.com" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="confirmEmail">Confirm Email Address:</label></div>
+          <div class="col-input"><input id="confirmEmail" name="confirmEmail" type="email" placeholder="Re-enter your email" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="phonePrimary">Primary Phone Number:</label></div>
+          <div class="col-input"><input id="phonePrimary" name="phonePrimary" type="tel" placeholder="+1-234-567-8900" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="phoneSecondary">Secondary Phone Number:</label></div>
+          <div class="col-input"><input id="phoneSecondary" name="phoneSecondary" type="tel" placeholder="Optional" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="address1">Address Line 1:</label></div>
+          <div class="col-input"><input id="address1" name="address1" type="text" placeholder="Street address" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="address2">Address Line 2:</label></div>
+          <div class="col-input"><input id="address2" name="address2" type="text" placeholder="Apt, suite, etc." /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="city">City:</label></div>
+          <div class="col-input"><input id="city" name="city" type="text" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="state">State/Province:</label></div>
+          <div class="col-input"><input id="state" name="state" type="text" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="zip">ZIP/Postal Code:</label></div>
+          <div class="col-input"><input id="zip" name="zip" type="text" class="small" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="country">Country:</label></div>
+          <div class="col-input"><input id="country" name="country" type="text" /></div>
+        </div>
+      </fieldset>
+
+      <!-- Education Background -->
+      <fieldset>
+        <legend>Education Background</legend>
+
+        <div class="row">
+          <div class="col-label"><label>Highest Level of Education:</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="radio" name="edu" value="highschool"> High School</label>
+            <label class="inline"><input type="radio" name="edu" value="associate"> Associate Degree</label>
+            <label class="inline"><input type="radio" name="edu" value="bachelor"> Bachelor's Degree</label>
+            <label class="inline"><input type="radio" name="edu" value="master"> Master's Degree</label>
+            <label class="inline"><input type="radio" name="edu" value="phd"> PhD/Doctorate</label>
+            <label class="inline"><input type="radio" name="edu" value="otherEdu"> Other</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="school">School/University Name:</label></div>
+          <div class="col-input"><input id="school" name="school" type="text" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="field">Field of Study:</label></div>
+          <div class="col-input"><input id="field" name="field" type="text" placeholder="e.g., Computer Science" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="gradYear">Year of Graduation:</label></div>
+          <div class="col-input"><input id="gradYear" name="gradYear" type="number" min="1900" max="2100" class="small" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="gpa">GPA (if applicable):</label></div>
+          <div class="col-input"><input id="gpa" name="gpa" type="text" placeholder="e.g., 3.8 / 4.0" class="small" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="certs">Professional Certifications:</label></div>
+          <div class="col-input"><input id="certs" name="certs" type="text" placeholder="List any certifications" /></div>
+        </div>
+      </fieldset>
+
+      <!-- Employment Information -->
+      <fieldset>
+        <legend>Employment Information</legend>
+
+        <div class="row">
+          <div class="col-label"><label>Current Employment Status:</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="radio" name="empStatus" value="full"> Employed Full-time</label>
+            <label class="inline"><input type="radio" name="empStatus" value="part"> Employed Part-time</label>
+            <label class="inline"><input type="radio" name="empStatus" value="self"> Self-employed</label>
+            <label class="inline"><input type="radio" name="empStatus" value="unemp"> Unemployed</label>
+            <label class="inline"><input type="radio" name="empStatus" value="student"> Student</label>
+            <label class="inline"><input type="radio" name="empStatus" value="retired"> Retired</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="company">Current Company Name:</label></div>
+          <div class="col-input"><input id="company" name="company" type="text" placeholder="If applicable" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="jobTitle">Job Title:</label></div>
+          <div class="col-input"><input id="jobTitle" name="jobTitle" type="text" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="yearsExp">Years of Work Experience:</label></div>
+          <div class="col-input"><input id="yearsExp" name="yearsExp" type="number" min="0" class="small" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="industry">Industry:</label></div>
+          <div class="col-input"><input id="industry" name="industry" type="text" placeholder="e.g., Technology, Healthcare" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>Salary Range (Optional):</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="radio" name="salary" value="0-30"> $0 - $30,000</label>
+            <label class="inline"><input type="radio" name="salary" value="30-50"> $30,000 - $50,000</label>
+            <label class="inline"><input type="radio" name="salary" value="50-75"> $50,000 - $75,000</label>
+            <label class="inline"><input type="radio" name="salary" value="75-100"> $75,000 - $100,000</label>
+            <label class="inline"><input type="radio" name="salary" value="100plus"> $100,000+</label>
+            <label class="inline"><input type="radio" name="salary" value="na"> Prefer not to say</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Skills and Interests -->
+      <fieldset>
+        <legend>Skills and Interests</legend>
+
+        <div class="row">
+          <div class="col-label"><label>Programming Languages (select all that apply):</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="checkbox" name="lang" value="html"> HTML</label>
+            <label class="inline"><input type="checkbox" name="lang" value="css"> CSS</label>
+            <label class="inline"><input type="checkbox" name="lang" value="js"> JavaScript</label>
+            <label class="inline"><input type="checkbox" name="lang" value="py"> Python</label>
+            <label class="inline"><input type="checkbox" name="lang" value="java"> Java</label>
+            <label class="inline"><input type="checkbox" name="lang" value="other"> Other</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="otherSkills">Other Skills (Please specify):</label></div>
+          <div class="col-input"><input id="otherSkills" name="otherSkills" type="text" placeholder="List additional skills" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>Hobbies and Interests:</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="checkbox" name="hobby" value="reading"> Reading</label>
+            <label class="inline"><input type="checkbox" name="hobby" value="sports"> Sports</label>
+            <label class="inline"><input type="checkbox" name="hobby" value="music"> Music</label>
+            <label class="inline"><input type="checkbox" name="hobby" value="travel"> Travel</label>
+            <label class="inline"><input type="checkbox" name="hobby" value="cooking"> Cooking</label>
+            <label class="inline"><input type="checkbox" name="hobby" value="photography"> Photography</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>Language Proficiency Level:</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="radio" name="langLevel" value="beginner"> Beginner</label>
+            <label class="inline"><input type="radio" name="langLevel" value="intermediate"> Intermediate</label>
+            <label class="inline"><input type="radio" name="langLevel" value="advanced"> Advanced</label>
+            <label class="inline"><input type="radio" name="langLevel" value="native"> Native</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Preferences and Settings -->
+      <fieldset>
+        <legend>Preferences and Settings</legend>
+
+        <div class="row">
+          <div class="col-label"><label>Preferred Method of Contact:</label></div>
+          <div class="col-input inline">
+            <label class="inline"><input type="radio" name="contactMethod" value="email"> Email</label>
+            <label class="inline"><input type="radio" name="contactMethod" value="phone"> Phone</label>
+            <label class="inline"><input type="radio" name="contactMethod" value="text"> Text Message</label>
+            <label class="inline"><input type="radio" name="contactMethod" value="postal"> Postal Mail</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="newsletter">Subscribe to Newsletter:</label></div>
+          <div class="col-input inline">
+            <input type="checkbox" id="newsletter" name="newsletter" value="yes"><label for="newsletter">Yes, I would like to receive newsletters</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="timezone">Timezone:</label></div>
+          <div class="col-input"><input id="timezone" name="timezone" type="text" placeholder="e.g., EST, PST, GMT" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>Availability for Contact:</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="checkbox" name="avail" value="morning"> Morning (9 AM - 12 PM)</label>
+            <label class="inline"><input type="checkbox" name="avail" value="afternoon"> Afternoon (12 PM - 5 PM)</label>
+            <label class="inline"><input type="checkbox" name="avail" value="evening"> Evening (5 PM - 9 PM)</label>
+            <label class="inline"><input type="checkbox" name="avail" value="anytime"> Anytime</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Additional Information -->
+      <fieldset>
+        <legend>Additional Information</legend>
+
+        <div class="row">
+          <div class="col-label"><label for="website">Personal Website or Portfolio:</label></div>
+          <div class="col-input"><input id="website" name="website" type="text" placeholder="https://www.example.com" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="linkedin">LinkedIn Profile:</label></div>
+          <div class="col-input"><input id="linkedin" name="linkedin" type="text" placeholder="https://www.linkedin.com/in/..." /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="github">GitHub Profile:</label></div>
+          <div class="col-input"><input id="github" name="github" type="text" placeholder="https://github.com/username" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="bio">Short Biography:</label></div>
+          <div class="col-input"><textarea id="bio" name="bio" maxlength="500" placeholder="Tell us about yourself (max 500 characters)"></textarea></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="notes">Additional Notes or Comments:</label></div>
+          <div class="col-input"><textarea id="notes" name="notes" placeholder="Any additional information you'd like to share"></textarea></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>How did you hear about us?</label></div>
+          <div class="col-input options-grid">
+            <label class="inline"><input type="radio" name="heard" value="google"> Google Search</label>
+            <label class="inline"><input type="radio" name="heard" value="social"> Social Media</label>
+            <label class="inline"><input type="radio" name="heard" value="friend"> Friend/Colleague</label>
+            <label class="inline"><input type="radio" name="heard" value="ad"> Advertisement</label>
+            <label class="inline"><input type="radio" name="heard" value="other"> Other</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Verification and Submission -->
+      <fieldset>
+        <legend>Verification and Submission</legend>
+
+        <div class="row">
+          <div class="col-label"><label for="password">Create Password:</label></div>
+          <div class="col-input"><input id="password" name="password" type="password" placeholder="Minimum 8 characters" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="confirmPassword">Confirm Password:</label></div>
+          <div class="col-input"><input id="confirmPassword" name="confirmPassword" type="password" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="securityQuestion">Security Question:</label></div>
+          <div class="col-input"><input id="securityQuestion" name="securityQuestion" type="text" placeholder="e.g., What is your mother's maiden name?" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="securityAnswer">Security Answer:</label></div>
+          <div class="col-input"><input id="securityAnswer" name="securityAnswer" type="text" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>Terms and Conditions:</label></div>
+          <div class="col-input inline"><input type="checkbox" id="terms" name="terms"/><label for="terms"> I agree to the Terms and Conditions</label></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label>Privacy Policy:</label></div>
+          <div class="col-input inline"><input type="checkbox" id="privacy" name="privacy"/><label for="privacy"> I have read and agree to the Privacy Policy</label></div>
+        </div>
+
+        <div class="row">
+          <div class="col-label"><label for="verificationCode">Verification Code (Enter 12345):</label></div>
+          <div class="col-input"><input id="verificationCode" name="verificationCode" type="text" class="small" /></div>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Submit Form</button>
+          <button type="reset">Reset Form</button>
+        </div>
+      </fieldset>
+
+      <p style="font-size:13px; color:#333; margin-top:10px;">Thank you for taking the time to complete this comprehensive survey!</p>
+    </form>
+  </div>
+</body>
+</html>

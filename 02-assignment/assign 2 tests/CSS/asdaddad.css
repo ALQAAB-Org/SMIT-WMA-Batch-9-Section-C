@@ -1,0 +1,67 @@
+.main {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.div5 {
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+
+}
+#wavy {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: rgb(70, 70, 72);
+}
+
+#img1 {
+    width: 350px;
+    height:300px;
+    border-radius: 50%;
+}
+
+#h1 {
+    font-size: 70px;
+    color: #BF124D
+}
+
+.h22 {
+    font-size: 30px;
+
+}
+
+.cvbtn {
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #5A0E24;
+    border-radius: 100px;
+    width: 130px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.div6 {
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    
+}
+
+.div1 img {
+    width: 350px;
+    height:auto;
+    border-radius: 50%;
+}
+
+.div2info {
+    display: flex;
+    width: 350px;
+    height:300px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+}

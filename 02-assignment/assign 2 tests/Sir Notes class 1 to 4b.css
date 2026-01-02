@@ -1,0 +1,213 @@
+/* class 3-b */
+#heading1 {
+  color: rgb(0, 0, 255);
+  background-color: #ff0000;
+}
+
+h1 {
+  color: rgb(255, 0, 0);
+  background-color: #00ff00;
+}
+.heading1 {
+  color: rgb(0, 255, 0);
+  background-color: brown;
+}
+
+.container {
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(red, yellow, green, purple, white);
+}
+
+.container2 {
+  width: 100px;
+  height: 100px;
+  background-image: linear-gradient(red, yellow, green, purple, white);
+}
+.container-size {
+  width: 100%;
+  height: 100px;
+}
+.container3 {
+  background-color: red;
+}
+.container4 {
+  background-color: green;
+}
+.container5 {
+  background-color: blue;
+}
+.container6 {
+  background-color: purple;
+}
+
+.para {
+  color: white;
+}
+
+.para-bg {
+  background-color: black;
+}
+
+
+  /* ===================================================================
+------------------------ Class 4-a ----
+     =================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.container {
+  width: 100px;
+  height: 100px;
+  /* background-color: rgba(255, 0, 0, 0.5); */
+  /* background-image: linear-gradient(
+    to right,
+    red,
+    yellow,
+    green,
+    purple,
+    white
+  ); */
+  /* background-image: radial-gradient(red, yellow, green, purple, white); */
+  /* background-image: conic-gradient(red, yellow, green, purple, aqua); */
+}
+
+/* body {
+  background-color: white;
+} */
+.para {
+  color: black;
+  /* background-image: linear-gradient(to right, red, yellow, green, purple, aqua); */
+  /* text-align: left;
+  text-align: right;
+  text-align: center;
+  text-align: justify; */
+  font-weight: 600;
+  font-family: "Montserrat", "Times New Roman";
+  font-size: 16px;
+  font-style: italic;
+  /* text-decoration: line-through;
+  text-decoration: underline;
+  text-decoration: overline; */
+  /* text-decoration: underline overline line-through; */
+  /* text-decoration: underline; */
+  /* text-decoration-style: double;
+  text-decoration-style: solid;
+  text-decoration-style: dotted;
+  text-decoration-style: double; */
+  /* text-decoration-style: wavy;
+  text-decoration-color: navy;
+  text-decoration-thickness: 1px; */
+  /* text-decoration: double underline 1px red; */
+  /* text-transform: capitalize; */
+}
+.parag1 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 100;
+}
+.parag2 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 200;
+}
+.parag3 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 300;
+}
+.parag4 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 400;
+}
+.parag5 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 500;
+}
+.parag6 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 600;
+}
+.parag7 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 700;
+}
+.parag8 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 800;
+}
+.parag9 {
+  font-family: "Montserrat", "Times New Roman";
+  font-weight: 900;
+}
+
+
+  /* ===================================================================
+------------------------ Class 4-b ----
+     =================================================================== */
+
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+.heading {
+  color: red;
+  /* background-color: blue; */
+  border: 2px solid yellow;
+  /* padding: 5px; */
+  /* padding: y-axis x-axis; */
+  /* padding: 5px 20px; */
+  /* padding:top right bottom left; */
+  /* padding: 5px 20px 25px 40px; */
+  /* margin: 10px; */
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.container {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+  /* border-width: 5px;
+  border-style: solid; */
+  /* border-style: double; */
+  /* border-style: dashed; */
+  /* border-style: dotted; */
+  /* border-style: groove; */
+  /* border-style: ridge; */
+  /* border-style: inset; */
+  /* border-style: outset; */
+  /* border-color: green; */
+  border: 3px solid pink;
+  overflow: hidden;
+  transition-property: all;
+  transition-duration: 5s;
+}
+.container:hover {
+  border-radius: 50%;
+}
+.btn {
+  background-color: #ea4c89;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 20px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 3s;
+  /* transition-delay: 5s; */
+}
+
+.transition-1 {
+  transition-timing-function: cubic-bezier(0, 1.09, 1, 0.75);
+}
+.transition-2 {
+  transition-timing-function: ease-in-out;
+}
+
+.btn:hover {
+  background-color: black;
+  color: red;
+  /* width: 500px; */
+  border-radius: 20px;
+}

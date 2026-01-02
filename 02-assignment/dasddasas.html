@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahbaz Ali - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Inconsolata:wght@700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sekuya&display=swap');
+
+        /* ========== CSS RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a192f;
+            --primary-light: #112240;
+            --secondary: #1d3557;
+            --accent: #64ffda;
+            --accent-hover: #4fd1b0;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --text-light: #a8b2d1;
+            --white: #e6f1ff;
+            --gradient-accent: linear-gradient(135deg, #64ffda 0%, #00b4d8 100%);
+            --gradient-dark: linear-gradient(180deg, #0a192f 0%, #112240 100%);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.3);
+            --shadow-accent: 0 10px 30px rgba(100, 255, 218, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========== UTILITY CLASSES ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .titles {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .titles::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .section-title-center {
+            text-align: center;
+        }
+
+        .section-title-center .titles::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slideInRight {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 24px;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .navbar a {
+            position: relative;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 20px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--accent);
+        }
+
+        .navbar a:hover::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            padding: 120px 24px 80px;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 180, 216, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1.sekuya-regular {
+            font-family: 'Sekuya', cursive;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .wavy {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .wavy::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            background: var(--gradient-accent);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .cv-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.25);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .hero-image img {
+            width: 380px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid var(--accent);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .hero-image:hover::before {
+            top: 15px;
+            left: 15px;
+        }
+
+        .hero-image:hover img {
+            transform: translate(-5px, -5px);
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about {
+            padding: 100px 24px;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about img {
+            width: 350px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .about img:hover {
+            transform: scale(1.02);
+        }
+
+        .about-info {
+            max-width: 500px;
+            background: var(--primary);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-info p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .about-info strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .about-info a {
+            color: var(--accent);
+        }
+
+        .about-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== EDUCATION SECTION ========== */
+        .education {
+            padding: 100px 24px;
+            background: var(--primary);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .result-card {
+            background: var(--primary-light);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .result-card .titles {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .result-card img {
+            width: 100px;
+            height: auto;
+            margin: 20px auto;
+            filter: brightness(1.1);
+        }
+
+        .result-card h3 {
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .result-card p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .result-card strong {
+            color: var(--text-light);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 40px 0;
+            background: var(--primary-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        thead {
+            background: var(--secondary);
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        tbody tr {
+            transition: var(--transition);
+        }
+
+        tbody tr:hover {
+            background: rgba(100, 255, 218, 0.05);
+        }
+
+        .total-row td {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Education History */
+        .education-history {
+            background: var(--primary-light);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent);
+            margin-top: 40px;
+        }
+
+        .education-history p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .education-history p::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .education-history strong {
+            color: var(--accent);
+        }
+
+        /* ========== SKILLS SECTION ========== */
+        .skills {
+            padding: 100px 24px;
+            background: var(--primary-light);
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .technical-skills, .soft-skills {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: var(--primary);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .technical-skills:hover, .soft-skills:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .technical-skills .titles, .soft-skills .titles {
+            margin-bottom: 30px;
+        }
+
+        .skills p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .soft-skills h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin: 30px 0 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        /* ========== PROJECTS SECTION ========== */
+        .projects {
+            padding: 100px 24px;
+            background: var(--primary);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects > .titles {
+            text-align: center;
+            display: block;
+            margin-bottom: 60px;
+        }
+
+        .projects > .titles::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .project {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: var(--primary-light);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-accent);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .project:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .project img {
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .project:hover img {
+            transform: scale(1.02);
+        }
+
+        .project p {
+            flex: 1;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .project strong {
+            display: block;
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact {
+            padding: 100px 24px;
+            background: var(--primary-light);
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .contact form {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: var(--primary);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact form .titles {
+            margin-bottom: 30px;
+        }
+
+        .contact label {
+            display: block;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background: var(--primary-light);
+            border: 2px solid rgba(100, 255, 218, 0.1);
+            border-radius: 8px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
+        }
+
+        .contact input::placeholder,
+        .contact textarea::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .contact textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact button[type="submit"] {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            background: var(--gradient-accent);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .contact button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: var(--primary);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info .titles {
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .contact-info strong {
+            color: var(--accent);
+        }
+
+        .contact-info a {
+            display: inline-block;
+            margin-right: 8px;
+            padding: 4px 0;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--primary);
+            padding: 60px 24px 30px;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .footer-about, .footer-links {
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+        }
+
+        .footer-about .titles, .footer-links .titles {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            padding: 8px 0;
+            transition: var(--transition);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 25px;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .footer-copyright {
+            width: 100%;
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .footer-copyright p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .hero-image img {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-image::before {
+                display: none;
+            }
+
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about img {
+                width: 280px;
+                height: 320px;
+            }
+
+            .project {
+                flex-direction: column !important;
+            }
+
+            .project img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                gap: 4px;
+                padding: 12px 16px;
+            }
+
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+
+            .hero {
+                padding: 100px 16px 60px;
+                min-height: auto;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .titles {
+                font-size: 1.5rem;
+            }
+
+            .about, .skills, .contact {
+                padding: 60px 16px;
+            }
+
+            .education {
+                padding: 60px 16px;
+            }
+
+            .projects {
+                padding: 60px 16px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 12px;
+            }
+
+            .technical-skills, .soft-skills,
+            .contact form, .contact-info {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar a {
+                padding: 6px 10px;
+                font-size: 0.7rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-image img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .cv-btn {
+                padding: 14px 28px;
+                font-size: 0.9rem;
+            }
+
+            .project {
+                padding: 20px;
+            }
+
+            .project strong {
+                font-size: 1.1rem;
+            }
+
+            footer {
+                padding: 40px 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1 class="sekuya-regular">Hi, I'm Shahbaz Ali</h1>
+            <h2><span class="wavy">Developer</span> | Student | Creative Thinker</h2>
+            <button class="cv-btn">Download CV</button>
+        </div>
+        <div class="hero-image">
+            <img src="./Assets/1.png" alt="Shahbaz Ali">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <img src="./Assets/2.png" alt="About Image">
+        <div class="about-info">
+            <p><strong>Name:</strong> Shahbaz Ali</p>
+            <p><strong>Age:</strong> 24</p>
+            <p><strong>City:</strong> Faisalabad</p>
+            <p><strong>Email:</strong> <a href="mailto:learnonline826@gmail.com">learnonline826@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+923261182021">03261182021</a></p>
+            <p><strong>Life Journey:</strong><br>
+            Born → Childhood → School → Work → SMIT → Web Development → Student</p>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="result-card">
+            <h2 class="titles">Punjab Examination Commission</h2>
+            <img src="./Assets/pec.png" alt="PEC Logo">
+            <h3>RESULT CARD - Grade 5 Examination 2015</h3>
+            <p><strong>Student:</strong> SHAHBAZ ALI</p>
+            <p><strong>Father:</strong> GHULAM NABI</p>
+            <p><strong>Date of Birth:</strong> 27-11-2001</p>
+            <p><strong>Sr. No:</strong> 33746 | <strong>District:</strong> FAISALABAD</p>
+            <p><strong>Roll No:</strong> 18-443-120 | <strong>Tehsil:</strong> FAISALABAD CITY</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Total Marks</th>
+                    <th>Marks Obtained</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>English</td><td>100</td><td>82</td></tr>
+                <tr><td>Mathematics</td><td>100</td><td>81</td></tr>
+                <tr><td>Urdu</td><td>100</td><td>74</td></tr>
+                <tr><td>Islamiyat/Ethics</td><td>100</td><td>77</td></tr>
+                <tr><td>General Science</td><td>100</td><td>64</td></tr>
+                <tr class="total-row"><td><strong>Total</strong></td><td><strong>500</strong></td><td><strong>378</strong></td></tr>
+                <tr><td><strong>Status:</strong></td><td colspan="2"><strong>PASS</strong></td></tr>
+            </tbody>
+        </table>
+
+        <div class="education-history">
+            <p><strong>2015 – Primary</strong> → Govt School Chuhar Majra</p>
+            <p><strong>2018 – Middle</strong> → Govt School Chuhar Majra</p>
+            <p><strong>2019 – 9th class</strong> → Millat-e-Islamia School Sada Bazar</p>
+            <p><strong>2020 – Work</strong> → Running Works and enjoy Life</p>
+            <p><strong>2025 – Web Development</strong> → Saylani</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="technical-skills">
+            <h2 class="titles">Technical Skills</h2>
+            <p>• HTML → 90%</p>
+            <p>• CSS → 80%</p>
+            <p>• JavaScript → 40%</p>
+            <p>• Computer Task Managing → 72%</p>
+            <p>• AI-Driven Software Engineer → 0.524%</p>
+        </div>
+        <div class="soft-skills">
+            <h2 class="titles">Soft Skills</h2>
+            <p>• Communication ☆☆☆☆</p>
+            <p>• Teamwork ☆☆☆☆</p>
+            <p>• Creativity ☆☆☆</p>
+            <h3>Languages</h3>
+            <p>• English → 95%</p>
+            <p>• Urdu → 100%</p>
+            <p>• Hindi → 90%</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h1 class="titles">My Projects <br> I Think Ai Builds</h1>
+        <div class="project">
+            <img src="./Assets/port1.png" alt="Gloves Cash Management System">
+            <p><strong>Gloves-Cash-Management-System:</strong><br>
+            Cash management system for Gloves manufacture company 2025 by ALQAAB org | Shahbaz Ali</p>
+        </div>
+        <div class="project">
+            <img src="./Assets/port2.png" alt="Monthly Expense Manager">
+            <p><strong>Monthly Expense Manager:</strong><br>
+            Your personal assistant, Cashier etc as you wish</p>
+        </div>
+        <div class="project">
+            <img src="./Assets/port3.png" alt="ALQAAB Task Manager">
+            <p><strong>ALQAAB-Task-Manager</strong><br>
+            A smart, offline-first task manager with subtasks, priorities, and dark mode.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <form>
+            <h2 class="titles">Contact Me</h2>
+            <label>Name:</label>
+            <input type="text" placeholder="Enter your name">
+            <label>Phone:</label>
+            <input type="text" placeholder="Enter your phone number">
+            <label>Email:</label>
+            <input type="email" placeholder="Enter your email">
+            <label>Message:</label>
+            <textarea rows="5" placeholder="Write your message here!"></textarea>
+            <button type="submit">Submit Form</button>
+        </form>
+
+        <div class="contact-info">
+            <h2 class="titles">Our Info</h2>
+            <p><strong>Name:</strong> Shahbaz Ali</p>
+            <p><strong>Email:</strong> <a href="mailto:learnonline826@gmail.com">learnonline826@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+923261182021">03261182021</a></p>
+            <p><strong>Address:</strong> Hssain Abad, Street no 2, nazd Independent hospital near Narwala road marzi pora Faisalabad, Punjab, Pakistan</p>
+            <p><strong>Links:</strong> 
+                <a href="https://maps.app.goo.gl/VRAW4Poyuh58bCPw5">Google Maps</a> | 
+                <a href="https://www.linkedin.com/in/alqaaborg">LinkedIn</a> | 
+                <a href="https://github.com/ALQAAB-Org">GitHub</a> | 
+                <a href="https://wa.me/923261182021">WhatsApp</a> | 
+                <a href="https://www.facebook.com/alqaab.org">Facebook</a> | 
+                <a href="https://www.youtube.com/@ALQAAB_YT_Studio">YouTube</a> | 
+                <a href="mailto:learnonline826@gmail.com">Mail</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-about">
+            <h3 class="titles">About</h3>
+            <p>ALQAAB Org. aik creative digital platform hai jo modern web solutions provide karta hai. <br> Yeh website ALQAAB Web Studio ne develop ki hai, <br> jiska lead developer Shahbaz Ali hai.</p>
+        </div>
+        <div class="footer-links">
+            <h3 class="titles">Quick Links</h3>
+            <a href="https://maps.app.goo.gl/VRAW4Poyuh58bCPw5">Google Maps</a>
+            <a href="https://www.linkedin.com/in/alqaaborg">LinkedIn</a>
+            <a href="https://github.com/ALQAAB-Org">GitHub</a>
+            <a href="https://wa.me/923261182021">WhatsApp</a>
+            <a href="https://www.facebook.com/alqaab.org">Facebook</a>
+            <a href="https://www.youtube.com/@ALQAAB_YT_Studio">YouTube</a>
+            <a href="mailto:learnonline826@gmail.com">Mail</a>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2025 ALQAAB Org. Developed by ALQAAB Web Studio | Shahbaz Ali</p>
+        </div>
+    </footer>
+</body>
+</html>
