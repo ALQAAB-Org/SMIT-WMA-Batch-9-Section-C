@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker Pro - Apna Waqt Manage Karein</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: #7c4dff;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #7c4dff;
+        }
+
+        .cta-button {
+            background: linear-gradient(to right, #7c4dff, #651fff);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(124, 77, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #bbbbbb;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: white;
+            border: 2px solid #7c4dff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .secondary-button:hover {
+            background: rgba(124, 77, 255, 0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h3 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #bbbbbb;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #7c4dff;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* Email Signup Section */
+        .email-signup {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .signup-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 60px 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .signup-box h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .signup-box p {
+            color: #bbbbbb;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .email-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        .email-input {
+            flex-grow: 1;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+
+        .email-input::placeholder {
+            color: #aaaaaa;
+        }
+
+        .success-message {
+            color: #4caf50;
+            margin-top: 20px;
+            display: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #bbbbbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #7c4dff;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            color: #888888;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-clock"></i>
+                <h1>Time Tracker Pro</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Khaas Features</a></li>
+                    <li><a href="#signup">Updates</a></li>
+                    <li><a href="#app">App</a></li>
+                </ul>
+            </nav>
+            <a href="https://alqaab-org.github.io/Time-Tracker/" class="cta-button" target="_blank">App Use Karein</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Apna Time Manage Karney Ka Aasaan Tareeka!</h2>
+            <p>Kya aap apna time track karna, apne goals set karna aur apni productivity badhana chahtey hain? Hamara <strong>Time Tracker Pro</strong> aap ke liye hi banaya gaya hai! Ye ek powerful web app hai jo aap ko apne din ka hisaab rakhney mein madad karta hai.</p>
+            
+            <div class="hero-buttons">
+                <a href="#signup" class="cta-button">Free Updates Paayein</a>
+                <a href="https://alqaab-org.github.io/Time-Tracker/" class="secondary-button" target="_blank">Abhi Try Karein</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h3>App Ki Khaas Features</h3>
+                <p>Time Tracker Pro aap ko dehta hai woh tamam tools jo aap ko productive banane ke liye chahiye</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h4>Smart Dashboard</h4>
+                    <p>Apne aaj ke total time, haal ki session aur goals ki progress ek hi jaga dekhein. Saara important information ek hi screen par.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <h4>Timer & Stopwatch</h4>
+                    <p>Kaam, parhai, ya exercise ke liye countdown timer set karein, ya phir kisi bhi kaam ki timing lene ke liye stopwatch istemal karein.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h4>Daily Goals</h4>
+                    <p>Apne rozana ke time tracking ke goals banayein aur unhein poora karne ka hisaab rakhein. Apni productivity measure karein.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h4>Complete History</h4>
+                    <p>Apne pichley sessions ka purana record dekhein aur analyze karein. Jaanein ke aap ka time kahan spend ho raha hai.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Signup Section -->
+    <section class="email-signup" id="signup">
+        <div class="container">
+            <div class="signup-box">
+                <h3>Aagey Ki Jaankari Pane Ke Liye</h3>
+                <p>Hum isi tool ko behtar banatey rahein ge. Naye features, productivity tips aur important updates direct apne inbox mein pane ke liye hamare mailing list mein subscribe karein.</p>
+                
+                <form class="email-form" id="emailForm">
+                    <input type="email" class="email-input" id="emailInput" placeholder="Aapna email address likhein (e.g., aapkaanam@example.com)" required>
+                    <button type="submit" class="cta-button">SUBSCRIBE KAREIN</button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    Shukriya! Aap ka email successfully register ho gaya hai. Aap ko jald hi updates milni shuru ho jayein gi.
+                </div>
+                
+                <p style="margin-top: 25px; font-size: 14px; color: #999;">Hum aap ki privacy ka khayal rakhte hain. Aap ka email sirf updates bhejne ke liye istemal kiya jaye ga.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-clock"></i> Time Tracker Pro
+                </div>
+                
+                <div class="footer-links">
+                    <a href="https://alqaab-org.github.io/Time-Tracker/" target="_blank">Main App</a>
+                    <a href="#features">Features</a>
+                    <a href="#signup">Updates</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2026 Time Tracker Pro. Tamam haqooq mahfooz hain. Ye tool bilkul FREE hai istemal ke liye.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Email form submission handler
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const emailInput = document.getElementById('emailInput');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Simple email validation
+            if (!emailInput.value || !emailInput.value.includes('@')) {
+                alert('Meharbani kar ke ek valid email address daalein.');
+                return;
+            }
+            
+            // In a real application, you would send this to your server
+            // For now, we'll simulate a successful submission
+            console.log('Email submitted:', emailInput.value);
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Reset form
+            emailInput.value = '';
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
